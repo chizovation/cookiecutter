@@ -1,5 +1,10 @@
 {
-  "directory_name": "Hello",
-  "file_name": "Howdy",
-  "greeting_recipient": "Julie"
+  "full_name": "Chisel Malik-Wright",
+  "email": "chisel@malik-wright.uk",
+  "github_org": "chizovation",
+  "project_name": "My Project Name",
+  "project_description": "This is {{ cookiecutter.project_name }}",
+  "directory_name": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+  "project_slug": "{{ cookiecutter.directory_name.lower().replace(' ', '-') }}",
+  "init_changesets": true
 }
