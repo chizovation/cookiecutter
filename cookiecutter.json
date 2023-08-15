@@ -6,5 +6,6 @@
   "project_description": "This is {{ cookiecutter.project_name }}",
   "directory_name": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
   "project_slug": "{{ cookiecutter.directory_name.lower().replace(' ', '-') }}",
-  "init_changesets": true
+  "init_changesets": true,
+  "pre_commit_hook_type": ["pre-commit", "pre-push"]
 }

@@ -34,7 +34,14 @@ def git_initial_commits():
 
 
 def setup_precommit():
-    subprocess.run(["pre-commit", "install"])
+    subprocess.run(
+        [
+            "pre-commit",
+            "install",
+            "--hook-type",
+            "{{cookiecutter.pre_commit_hook_type}}",
+        ]
+    )
     # we'll run an autoupdate to make sure we have the latest version of the
     # hooks
     subprocess.run(["pre-commit", "autoupdate"])
