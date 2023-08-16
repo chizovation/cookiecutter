@@ -61,13 +61,13 @@ def setup_changesets():
 
     # we need to replace the "changelog" entry in .changeset/config.json
     # and replace it with:
-    # "changelog": ["@svitejs/changesets-changelog-github-compact", { "repo": "{{cookiecutter.github_org}}/{{cookiecutter.project_slug}}" }]
+    # "changelog": ["@svitejs/changesets-changelog-github-compact", { "repo": "{{cookiecutter.github_owner}}/{{cookiecutter.project_slug}}" }]
     # it's a json file so we read, amend, and write it back out
     with open(".changeset/config.json", "r") as f:
         config = json.load(f)
         config["changelog"] = [
             "@svitejs/changesets-changelog-github-compact",
-            {"repo": "{{cookiecutter.github_org}}/{{cookiecutter.project_slug}}"},
+            {"repo": "{{cookiecutter.github_owner}}/{{cookiecutter.project_slug}}"},
         ]
         # we also want "commit" to be true
         config["commit"] = True
@@ -101,7 +101,7 @@ def git_remote_and_project():
             "remote",
             "add",
             "origin",
-            "git@github.com:{{cookiecutter.github_org}}/{{cookiecutter.project_slug}}.git",
+            "git@github.com:{{cookiecutter.github_owner}}/{{cookiecutter.project_slug}}.git",
         ]
     )
 
