@@ -1,11 +1,30 @@
 {
   "full_name": "Chisel Malik-Wright",
   "email": "chisel@malik-wright.uk",
-  "github_org": "chizovation",
+  "github_owner_type": ["user", "org"],
+  "github_owner": "chizovation",
   "project_name": "My Project Name",
   "project_description": "This is {{ cookiecutter.project_name }}",
-  "directory_name": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
-  "project_slug": "{{ cookiecutter.directory_name.lower().replace(' ', '-') }}",
+  "__directory_name": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+  "project_slug": "{{ cookiecutter.__directory_name.lower().replace(' ', '-') }}",
   "init_changesets": true,
-  "pre_commit_hook_type": ["pre-commit", "pre-push"]
+  "pre_commit_hook_type": ["pre-commit", "pre-push"],
+  "__prompts__": {
+    "full_name": "Author full name:",
+    "email": "Author email:",
+    "github_owner_type": {
+      "__prompt__": "Github project owner type:",
+      "user": "User",
+      "org": "Organisation"
+    },
+    "github_owner": "Github project owner:",
+    "project_name": "Project name:",
+    "project_description": "Short project description:",
+    "init_changesets": "Initialise changesets?",
+    "pre_commit_hook_type": {
+      "__prompt__": "Pre-commit hook type:",
+      "pre-commit": "Pre-commit; invoke before making a commit",
+      "pre-push": "Pre-push: invoke before pushing to remote"
+    }
+  }
 }
