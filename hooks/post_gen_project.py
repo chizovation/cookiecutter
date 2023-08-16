@@ -93,6 +93,29 @@ Inital Commit + Changesets
     do_git_commit("Initialise changesets")
 
 
+def git_remote_and_project():
+    # set the gi remote
+    subprocess.run(
+        [
+            "git",
+            "remote",
+            "add",
+            "origin",
+            "git@github.com:{{cookiecutter.github_org}}/{{cookiecutter.project_slug}}.git",
+        ]
+    )
+
+    # if our is Darwin, call open with a URL for a new github repo
+    if os.uname().sysname == "Darwin":
+        # https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository
+        subprocess.run(
+            [
+                "open",
+                "https://github.com/new?name={{cookiecutter.project_slug}}&description={{cookiecutter.project_description}}&private=false&owner=@me",
+            ]
+        )
+
+
 def do_changesets():
     return "{{ cookiecutter.init_changesets }}" == "True"
 
@@ -108,6 +131,7 @@ if __name__ == "__main__":
         subprocess.run(["rm", "-rf", "package.json"])
 
     git_initial_commits()
+    git_remote_and_project()
     setup_precommit()
 
     # we could mess about with pre-generated files, but it's easier to just let
