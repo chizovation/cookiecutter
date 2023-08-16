@@ -5,8 +5,7 @@
   "github_owner": "chizovation",
   "project_name": "My Project Name",
   "project_description": "This is {{ cookiecutter.project_name }}",
-  "__directory_name": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
-  "project_slug": "{{ cookiecutter.__directory_name.lower().replace(' ', '-') }}",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
   "init_changesets": true,
   "pre_commit_hook_type": ["pre-commit", "pre-push"],
   "__prompts__": {
