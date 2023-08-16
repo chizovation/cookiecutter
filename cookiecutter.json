@@ -8,6 +8,7 @@
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
   "init_changesets": true,
   "pre_commit_hook_type": ["pre-commit", "pre-push"],
+  "use_workflows": true,
   "__prompts__": {
     "full_name": "Author full name:",
     "email": "Author email:",
@@ -24,6 +25,8 @@
       "__prompt__": "Pre-commit hook type:",
       "pre-commit": "Pre-commit; invoke before making a commit",
       "pre-push": "Pre-push: invoke before pushing to remote"
-    }
-  }
+    },
+    "use_workflows": "Use Github workflows?"
+  },
+  "_copy_without_render": [".github/workflows/*.yml"]
 }

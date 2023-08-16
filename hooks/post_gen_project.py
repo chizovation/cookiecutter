@@ -120,6 +120,10 @@ def do_changesets():
     return "{{ cookiecutter.init_changesets }}" == "True"
 
 
+def do_workflows():
+    return "{{ cookiecutter.use_workflows }}" == "True"
+
+
 if __name__ == "__main__":
     # abort if git isn't installed
     if subprocess.run(["git", "--version"], capture_output=True).returncode != 0:
@@ -129,6 +133,10 @@ if __name__ == "__main__":
     # if we are NOT doing changesets, we need to remove the changesets files
     if not do_changesets():
         subprocess.run(["rm", "-rf", "package.json"])
+
+    # if we are NOT doing github actions, we need to remove the github actions files
+    if not do_workflows():
+        subprocess.run(["rm", "-rf", ".github/workflows"])
 
     git_initial_commits()
     git_remote_and_project()
