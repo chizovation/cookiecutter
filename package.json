@@ -1,6 +1,6 @@
 {
   "name": "cookiecutter-chizovation",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "author": "Chisel <chisel@malik-wright.uk>",
   "license": "CC-BY-NC-ND-4.0",
