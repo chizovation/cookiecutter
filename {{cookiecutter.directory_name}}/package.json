@@ -1,5 +1,5 @@
 {
-  "name": "{{cookiecutter.directory_name}}",
+  "name": "{{cookiecutter.__directory_name}}",
   "version": "0.0.0",
   "description": "{{cookiecutter.project_description}}",
   "repository": "git@github.com:{{cookiecutter.github_owner}}/{{cookiecutter.project_slug}}.git",
