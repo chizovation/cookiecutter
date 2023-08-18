@@ -1,5 +1,15 @@
 # cookiecutter-chizovation
 
+## 0.0.3
+
+### Patch Changes
+
+- feat: add sync (aka create/configure) labels workflow ([#11](https://github.com/chizovation/cookiecutter/pull/11))
+
+- chore: ensure workflows and jobs have 'nice names' ([#13](https://github.com/chizovation/cookiecutter/pull/13))
+
+- chore: add workflow action to block autosquash commits ([#12](https://github.com/chizovation/cookiecutter/pull/12))
+
 ## 0.0.2
 
 ### Patch Changes
