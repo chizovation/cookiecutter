@@ -1,5 +1,5 @@
 ---
-name: Changeset Release
+name: Changesets
 
 # yamllint disable rule:truthy
 on:
@@ -13,12 +13,12 @@ permissions: read-all
 
 jobs:
   release:
+    name: Release
     # IMPORTANT: prevent this action from running on forks
     if: github.repository == 'chizovation/cookiecutter'
     permissions:
       contents: write # to create release (changesets/action)
       pull-requests: write # to create pull request (changesets/action)
-    name: Changeset Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
