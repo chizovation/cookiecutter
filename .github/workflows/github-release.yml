@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   create-release:
+    name: Github Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

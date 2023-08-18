@@ -11,7 +11,7 @@ on:
 
 jobs:
   labeler:
-    name: Labeler
+    name: Add Labels to PRs
     runs-on: ubuntu-latest
     steps:
       - uses: fuxingloh/multi-labeler@v2
