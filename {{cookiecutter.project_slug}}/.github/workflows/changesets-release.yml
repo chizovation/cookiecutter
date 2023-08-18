@@ -15,7 +15,8 @@ jobs:
   release:
     name: Release
     # IMPORTANT: prevent this action from running on forks
-    if: github.repository == 'chizovation/cookiecutter'
+    # yamllint disable-line rule:line-length
+    if: github.repository == '{{cookiecutter.github_owner}}/{{cookiecutter.project_slug}}'
     permissions:
       contents: write # to create release (changesets/action)
       pull-requests: write # to create pull request (changesets/action)
