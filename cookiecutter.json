@@ -27,6 +27,5 @@
       "pre-push": "Pre-push: invoke before pushing to remote"
     },
     "use_workflows": "Use Github workflows?"
-  },
-  "_copy_without_render": [".github/workflows/*.yml"]
+  }
 }

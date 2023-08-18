@@ -28,9 +28,9 @@ jobs:
         # only run if we have a changelog entry
         if: steps.get-changelog-info.outputs.last-change-entry != ''
         with:
-          body: ${{ steps.get-changelog-info.outputs.last-change-entry }}
+          body: $\{\{ steps.get-changelog-info.outputs.last-change-entry }}
           # yamllint disable-line rule:line-length
-          tag_name: ${{ steps.get-changelog-info.outputs.last-change-version-v }}
-          name: ${{ steps.get-changelog-info.outputs.last-change-version-v }}
+          tag_name: $\{\{ steps.get-changelog-info.outputs.last-change-version-v }}
+          name: $\{\{ steps.get-changelog-info.outputs.last-change-version-v }}
           draft: false
           prerelease: false
