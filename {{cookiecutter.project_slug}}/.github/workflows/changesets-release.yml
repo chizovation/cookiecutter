@@ -7,7 +7,7 @@ on:
     branches:
       - main
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+concurrency: '{%raw%}${{ github.workflow }}-${{ github.ref }}{%endraw%}'
 
 permissions: read-all
 
@@ -15,7 +15,8 @@ jobs:
   release:
     name: Release
     # IMPORTANT: prevent this action from running on forks
-    if: github.repository == 'chizovation/cookiecutter'
+    # yamllint disable-line rule:line-length
+    if: github.repository == '{{cookiecutter.github_owner}}/{{cookiecutter.project_slug}}'
     permissions:
       contents: write # to create release (changesets/action)
       pull-requests: write # to create pull request (changesets/action)
@@ -24,7 +25,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.CHANGESETS_TOKEN }}
+          token: '{%raw%}${{ secrets.CHANGESETS_TOKEN }}{%endraw%}'
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -38,7 +39,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.CHANGESETS_TOKEN }}
+          GITHUB_TOKEN: '{%raw%}${{ secrets.CHANGESETS_TOKEN }}{%endraw%}'
         with:
           title: Release Changeset (bake CHANGELOG.md)
 
@@ -51,9 +52,11 @@ jobs:
         # https://github.com/changesets/action#custom-publishing
         if: steps.changesets.outputs.hasChangesets == 'false'
         shell: bash
+        # yamllint disable rule:line-length
         run: |
-          git tag ${{ steps.get-changelog-info.outputs.last-change-version-v }}
+          git tag $\{\{ steps.get-changelog-info.outputs.last-change-version-v }}
           # this could fail in a merge without changesets
           # (e.g. update README.md, merge)
           # but that's a bit naughty anyway, so we'll let it fail
           git push --tags
+        # yamllint enable rule:line-length

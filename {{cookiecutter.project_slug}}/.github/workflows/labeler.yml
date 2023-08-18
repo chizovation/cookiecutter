@@ -11,9 +11,9 @@ on:
 
 jobs:
   labeler:
-    name: Labeler
+    name: Add Labels to PRs
     runs-on: ubuntu-latest
     steps:
       - uses: fuxingloh/multi-labeler@v2
         with:
-          github-token: ${{ secrets.CHANGESETS_TOKEN }}
+          github-token: '{% raw %}${{ secrets.CHANGESETS_TOKEN }}{% endraw %}'

@@ -1,0 +1,37 @@
+---
+name: Github Release
+
+# yamllint disable-line rule:truthy
+on:
+  push:
+    tags:
+      - v*
+
+permissions:
+  contents: write
+
+jobs:
+  create-release:
+    name: Github Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # we use ourself to get the information for the release
+      - name: Get Change Info
+        uses: chizovation/changesets-changelog-info@0.1.2
+        id: get-changelog-info
+
+      - name: Create GH Release
+        uses: softprops/action-gh-release@v1
+        # only run if we have a changelog entry
+        if: steps.get-changelog-info.outputs.last-change-entry != ''
+        with:
+          # yamllint disable rule:line-length
+          body: '{%raw%}${{ steps.get-changelog-info.outputs.last-change-entry }}{%endraw%}'
+          tag_name: '{%raw%}${{ steps.get-changelog-info.outputs.last-change-version-v }}{%endraw%}'
+          name: '{%raw%}${{ steps.get-changelog-info.outputs.last-change-version-v }}{%endraw%}'
+          draft: false
+          prerelease: false
+          # yamllint enable rule:line-length
