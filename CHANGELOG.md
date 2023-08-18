@@ -1,5 +1,21 @@
 # cookiecutter-chizovation
 
+## 0.0.2
+
+### Patch Changes
+
+- fix: use reachable version of changesets-changelog-info ([#9](https://github.com/chizovation/cookiecutter/pull/9))
+
+- feat: add labeler action (project) ([#6](https://github.com/chizovation/cookiecutter/pull/6))
+
+- feat: add github release action for the project ([#10](https://github.com/chizovation/cookiecutter/pull/10))
+
+- feat: add changesets release action to project ([#7](https://github.com/chizovation/cookiecutter/pull/7))
+
+- feat: add auto author assign action (project) ([#4](https://github.com/chizovation/cookiecutter/pull/4))
+
+- feat: add assign-pr.yml workflow to cookie template ([#3](https://github.com/chizovation/cookiecutter/pull/3))
+
 ## 0.0.1
 
 ### Patch Changes
