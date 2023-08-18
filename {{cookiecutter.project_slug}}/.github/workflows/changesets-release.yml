@@ -7,7 +7,7 @@ on:
     branches:
       - main
 
-concurrency: $\{\{ github.workflow }}-$\{\{ github.ref }}
+concurrency: '{%raw%}${{ github.workflow }}-${{ github.ref }}{%endraw%}'
 
 permissions: read-all
 
@@ -25,7 +25,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
         with:
-          token: $\{\{ secrets.CHANGESETS_TOKEN }}
+          token: '{%raw%}${{ secrets.CHANGESETS_TOKEN }}{%endraw%}'
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -39,7 +39,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         env:
-          GITHUB_TOKEN: $\{\{ secrets.CHANGESETS_TOKEN }}
+          GITHUB_TOKEN: '{%raw%}${{ secrets.CHANGESETS_TOKEN }}{%endraw%}'
         with:
           title: Release Changeset (bake CHANGELOG.md)
 
