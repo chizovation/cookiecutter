@@ -1,0 +1,19 @@
+---
+name: Commit Sanity Checks
+
+# yamllint disable rule:truthy
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  message-check:
+    # https://github.com/xt0rted/block-autosquash-commits-action
+    name: Block Autosquash Commits
+    runs-on: ubuntu-latest
+    steps:
+      - name: Block Autosquash Commits
+        uses: xt0rted/block-autosquash-commits-action@v2
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
