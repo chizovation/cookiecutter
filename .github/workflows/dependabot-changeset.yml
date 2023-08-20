@@ -45,6 +45,9 @@ jobs:
           echo "Generated name is: ${{ steps.generator.outputs.name }}"
 
       - uses: actions/checkout@v3
+        with:
+          # https://github.com/marketplace/actions/add-commit#working-with-prs
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Setup Git User
         uses: fregante/setup-git-user@v2
@@ -70,8 +73,6 @@ jobs:
       - name: Update Pull Request
         id: update-pr
         uses: peter-evans/create-pull-request@v5
-        with:
-          base: ${{ github.head_ref }}
 
       - name: Debug Pull Request Step
         shell: bash
