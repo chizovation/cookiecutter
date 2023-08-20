@@ -6,6 +6,10 @@ on:
   push:
     branches:
       - main
+  # useful for testing without needing to merge
+  pull_request:
+    branches:
+      - main
 
 permissions:
   issues: write
