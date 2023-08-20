@@ -132,7 +132,16 @@ if __name__ == "__main__":
 
     # if we are NOT doing changesets, we need to remove the changesets files
     if not do_changesets():
-        subprocess.run(["rm", "-rf", "package.json"])
+        changesets_files = [
+            ".github/dependabot-changeset.template.md",
+            ".github/workflows/changesets-release.yml",
+            ".github/workflows/dependabot-changeset.yml",
+            "CONTRIBUTING-changelog.md",
+            "CONTRIBUTING-release-process.md",
+            "package.json",
+        ]
+        for file in changesets_files:
+            subprocess.run(["rm", "-rf", file])
 
     # if we are NOT doing github actions, we need to remove the github actions files
     if not do_workflows():

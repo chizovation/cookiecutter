@@ -42,10 +42,10 @@
     "name": "deps-dev"
   },
   {
-    "aliases": ["Documentation"],
+    "aliases": ["Documentation", "documenation"],
     "color": "0075ca",
     "description": "Solely about the documentation of the project.",
-    "name": "documentation"
+    "name": "docs"
   },
   {
     "aliases": ["feature", "enhancement"],
