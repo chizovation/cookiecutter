@@ -73,6 +73,8 @@ jobs:
       - name: Update Pull Request
         id: update-pr
         uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.CHANGESETS_TOKEN }}
 
       - name: Debug Pull Request Step
         shell: bash
