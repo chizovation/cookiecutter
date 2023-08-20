@@ -13,7 +13,7 @@ jobs:
   add-changeset-fragment:
     name: Add changeset fragment
     runs-on: ubuntu-latest
-    if: ${{ github.actor == 'dependabot[bot]' }}
+    if: "{%raw%}${{ github.actor == 'dependabot[bot]' }}{%endraw%}"
 
     steps:
       # Find the PR associated with this push, if there is one.
@@ -26,7 +26,7 @@ jobs:
       - run: echo "Your PR is ${PR}"
         if: success() && steps.find-pr.outputs.number
         env:
-          PR: ${{ steps.find-pr.outputs.pr }}
+          PR: '{%raw%}${{ steps.find-pr.outputs.pr }}{%endraw%}'
 
       - uses: boonya/gh-action-name-generator@v1
         if: success() && steps.find-pr.outputs.number
@@ -36,13 +36,13 @@ jobs:
           separator: '-'
           length: 3
       - run: |
-          echo "Generated name is: ${{ steps.generator.outputs.name }}"
+          echo "Generated: {%raw%}${{ steps.generator.outputs.name }}{%endraw%}"
 
       - uses: actions/checkout@v3
         if: success() && steps.find-pr.outputs.number
         with:
           # https://github.com/marketplace/actions/add-commit#working-with-prs
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: '{%raw%}${{ github.event.pull_request.head.ref }}{%endraw%}'
 
       - name: Setup Git User
         if: success() && steps.find-pr.outputs.number
@@ -55,16 +55,18 @@ jobs:
         with:
           template: .github/dependabot-changeset.template.md
           vars: |
-            prTitle: '${{ steps.find-pr.outputs.title }}'
+            prTitle: '{%raw%}${{ steps.find-pr.outputs.title }}{%endraw%}'
 
       - name: Create Changeset Fragment
         if: success() && steps.find-pr.outputs.number
         shell: bash
         # yamllint disable rule:line-length
         run: |
+          {% raw -%}
           echo "${{ steps.render.outputs.result }}" > .changeset/${{ steps.generator.outputs.name }}.md
           cat .changeset/${{ steps.generator.outputs.name }}.md
           git add .changeset/${{ steps.generator.outputs.name }}.md
           git commit -m "docs(changeset): add changeset fragment for ${{ steps.find-pr.outputs.title }}"
           git push origin HEAD
+          {%- endraw %}
         # yamllint enable rule:line-length
