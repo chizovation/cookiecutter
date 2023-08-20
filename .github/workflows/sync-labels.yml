@@ -27,3 +27,4 @@ jobs:
         with:
           config-file: .github/labels.json
           clean-labels: true
+          token: ${{ secrets.CHANGESETS_TOKEN }}
