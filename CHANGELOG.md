@@ -1,5 +1,23 @@
 # cookiecutter-chizovation
 
+## 0.0.4
+
+### Patch Changes
+
+- chore(deps): bump chizovation/changesets-changelog-info from 0.1.2 to 0.1.5 ([#18](https://github.com/chizovation/cookiecutter/pull/18))
+
+- fix: yamllint rule:truthy; disable -> disable-line ([#15](https://github.com/chizovation/cookiecutter/pull/15))
+
+- feat: add workflows to cookiecutter's .github folder ([#15](https://github.com/chizovation/cookiecutter/pull/15))
+
+- chore: add dependabot config (project and cookiecutter) ([#17](https://github.com/chizovation/cookiecutter/pull/17))
+
+- chore: only run labeler on push to main ([#19](https://github.com/chizovation/cookiecutter/pull/19))
+
+- chore: update 'nice names' for existing cookiecutter workflows ([#15](https://github.com/chizovation/cookiecutter/pull/15))
+
+- feat: add dependabot changeset workflow ([#19](https://github.com/chizovation/cookiecutter/pull/19))
+
 ## 0.0.3
 
 ### Patch Changes
