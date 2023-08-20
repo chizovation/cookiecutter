@@ -1,5 +1,6 @@
 ---
-'cookiecutter-chizovation': patch
+'{{cookiecutter.project_slug}}': patch
 ---
 
-{{ .prTitle }}
+{# <!-- markdownlint-disable MD041 --> -#}
+{%raw%}{{ .prTitle }}{%endraw%}
