@@ -3,8 +3,7 @@ name: ♻️ Sync Labels
 
 # yamllint disable-line rule:truthy
 on:
-  workflow_dispatch:
-  pull_request:
+  push:
     branches:
       - main
 
@@ -24,3 +23,4 @@ jobs:
         with:
           config-file: .github/labels.json
           clean-labels: true
+          token: '{%raw%}${{ secrets.CHANGESETS_TOKEN }}{%endraw%}'

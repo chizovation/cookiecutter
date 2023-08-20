@@ -6,6 +6,10 @@ on:
   push:
     branches:
       - main
+  # useful for testing without needing to merge
+  pull_request:
+    branches:
+      - main
 
 permissions:
   issues: write
@@ -23,3 +27,4 @@ jobs:
         with:
           config-file: .github/labels.json
           clean-labels: true
+          token: ${{ secrets.CHANGESETS_TOKEN }}
