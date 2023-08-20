@@ -75,6 +75,7 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.CHANGESETS_TOKEN }}
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Debug Pull Request Step
         shell: bash
