@@ -1,0 +1,83 @@
+---
+name: Dependabot
+
+# yamllint disable-line rule:truthy
+on:
+  # TODO: uncomment when Dependabot is enabled
+  # pull_request_target:
+  # TODO: remove when Dependabot is enabled
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  add-changeset-fragment:
+    name: Add changeset fragment
+    runs-on: ubuntu-latest
+    # TODO: reverse logic when Dependabot is enabled
+    if: ${{ github.actor != 'dependabot[bot]' }}
+
+    steps:
+      # Find the PR associated with this push, if there is one.
+      - uses: jwalton/gh-find-current-pr@v1
+        id: find-pr
+        with:
+          # Can be "open", "closed", or "all".  Defaults to "open".
+          state: open
+      # This will echo "Your PR is 7", or be skipped if there is no current PR.
+      - run: echo "Your PR is ${PR}"
+        if: success() && steps.find-pr.outputs.number
+        env:
+          PR: ${{ steps.find-pr.outputs.pr }}
+
+      - uses: boonya/gh-action-name-generator@v1
+        if: success() && steps.find-pr.outputs.number
+        id: generator
+        with:
+          style: lowerCase
+          separator: '-'
+          length: 3
+      - run: |
+          echo "Generated name is: ${{ steps.generator.outputs.name }}"
+
+      - uses: actions/checkout@v3
+
+      - name: Setup Git User
+        uses: fregante/setup-git-user@v2
+
+      - name: Render template
+        id: render
+        uses: chuhlomin/render-template@v1.7
+        with:
+          template: .github/dependabot-changeset.template.md
+          vars: |
+            prTitle: '${{ steps.find-pr.outputs.title }}'
+
+      - name: Create Changeset Fragment
+        shell: bash
+        # yamllint disable rule:line-length
+        run: |
+          echo "${{ steps.render.outputs.result }}" > .changeset/${{ steps.generator.outputs.name }}.md
+          cat .changeset/${{ steps.generator.outputs.name }}.md
+          git add .changeset/${{ steps.generator.outputs.name }}.md
+          git commit -m "chore: add changeset fragment for ${{ steps.find-pr.outputs.title }}"
+        # yamllint enable rule:line-length
+
+      - name: Update Pull Request
+        id: update-pr
+        uses: peter-evans/create-pull-request@v5
+        with:
+          base: ${{ github.head_ref }}
+
+      - name: Debug Pull Request Step
+        shell: bash
+        # yamllint disable rule:line-length
+        run: |
+          echo "Pull Request Number: ${{ steps.update-pr.outputs.pull-request-number }}"
+          echo "Pull Request URL: ${{ steps.update-pr.outputs.pull-request-url }}"
+          echo "Pull Request Operation: ${{ steps.update-pr.outputs.pull-request-operation }}"
+        # yamllint enable rule:line-length
