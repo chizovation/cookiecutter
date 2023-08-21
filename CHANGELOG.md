@@ -1,5 +1,23 @@
 # cookiecutter-chizovation
 
+## 0.0.5
+
+### Patch Changes
+
+- feat: update 'no changesets' choice to exclude changsets assets from generated output ([#25](https://github.com/chizovation/cookiecutter/pull/25))
+
+- update templated github workflows based on project versions of the same ([#22](https://github.com/chizovation/cookiecutter/pull/22))
+
+- docs: add README and CONTRIBUTING documentation ([#25](https://github.com/chizovation/cookiecutter/pull/25))
+
+- fix: use {%raw%} in newly copied dependabot template actions ([#24](https://github.com/chizovation/cookiecutter/pull/24))
+
+- docs: add version badge to readme ([#26](https://github.com/chizovation/cookiecutter/pull/26))
+
+- fix: 'docs' is the allowed label name for documentation ([#25](https://github.com/chizovation/cookiecutter/pull/25))
+
+- fix: use CHANGESETS_TOKEN with sync-labels action ([#22](https://github.com/chizovation/cookiecutter/pull/22))
+
 ## 0.0.4
 
 ### Patch Changes
