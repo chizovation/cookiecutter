@@ -17,10 +17,19 @@ brew install cookiecutter
 Change to whereever you want to create the new project directory, then run:
 
 ```sh
-cookiecutter gh:chizovation/cookiecutter
+cookiecutter gh:chizovation/cookiecutter --checkout v0.0.4
 ```
 
 and follow the prompts.
+
+### Latest unreleased version
+
+If you want to use the latest unreleased version of this project, you can
+either omit `--checkout v0.0.4` or specify `--checkout main`
+
+```sh
+cookiecutter gh:chizovation/cookiecutter --checkout main
+```
 
 ## User Config
 
