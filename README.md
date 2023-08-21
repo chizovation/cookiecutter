@@ -1,5 +1,7 @@
 # cookiecutter
 
+![Version](https://img.shields.io/badge/latest-v0.0.4-blue)
+
 ## Getting started
 
 You'll need to [install cookiecutter][cookiecutter-install].
