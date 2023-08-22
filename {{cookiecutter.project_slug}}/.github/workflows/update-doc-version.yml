@@ -51,7 +51,7 @@ jobs:
             --allow-dirty \
             --no-commit \
             --no-tag \
-            --message "chore: update version in files (${current_version})" \
+            --message "chore: update version in files (${current_version})\n\n[skip ci]" \
             --new-version "${current_version}" \
             patch
           {%-endraw%}
